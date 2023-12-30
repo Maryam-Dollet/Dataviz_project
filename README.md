@@ -11,7 +11,7 @@ pip install -r requirements.txt
 
 ## Useful Commands
 
-Push new code to the git repository:
+Push new code to the git repository
 
 ```
 bash lazy-git.sh
