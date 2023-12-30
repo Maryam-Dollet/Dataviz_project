@@ -15,7 +15,7 @@ df_merged = load_datasets()
 
 st.dataframe(df_merged)
 
-st.subheader("Participans Gender Total")
+st.subheader("Gender Analysis")
 df1 = (
     df_merged.value_counts("Sex")
     .reset_index()
@@ -23,7 +23,7 @@ df1 = (
 )
 st.dataframe(df1)
 
-fig = px.bar(df1, x="Gender", y="gender_count")
+fig = px.bar(df1, x="Gender", y="gender_count", title="Gender Repartition")
 st.plotly_chart(fig)
 
-st.subheader("Gender Repartition Through the Years")
+st.write("Gender Repartition Through the Years")
