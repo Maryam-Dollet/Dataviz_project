@@ -27,3 +27,21 @@ fig = px.bar(df1, x="Gender", y="gender_count", title="Gender Repartition")
 st.plotly_chart(fig)
 
 st.write("Gender Repartition Through the Years")
+df2 = (
+    df_merged.groupby("Year")["Sex"]
+    .value_counts()
+    .reset_index()
+    .rename(columns={"count": "nb"})
+)
+
+fig = px.bar(
+    df2,
+    x="Year",
+    y="nb",
+    color="Sex",
+    title="Gender Repartition",
+    width=1500,
+    height=800,
+)
+fig.update_xaxes(type="category")
+st.plotly_chart(fig)
