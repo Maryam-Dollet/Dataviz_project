@@ -17,3 +17,8 @@ Update requirement.txt
 conda list -e > requirements.txt
 ```
 
+Run streamlit in local
+
+```
+streamlit run dataviz_st/Welcome.py 
+```
