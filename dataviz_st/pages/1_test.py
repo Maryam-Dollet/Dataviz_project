@@ -34,6 +34,8 @@ df2 = (
     .rename(columns={"count": "nb"})
 )
 
+st.dataframe(df2.style.format({"Year": lambda x: "{:}".format(x)}))
+
 fig = px.bar(
     df2,
     x="Year",
