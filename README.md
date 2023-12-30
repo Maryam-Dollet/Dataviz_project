@@ -1,7 +1,13 @@
 # Dataviz_project
 Olympic Games Data Visualization Project
 
-## Description
+## Setup
+
+Create a new anaconda environment and load the requirements
+
+```
+pip install -r requirements.txt
+```
 
 ## Useful Commands
 
