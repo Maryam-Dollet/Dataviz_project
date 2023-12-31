@@ -27,6 +27,7 @@ fig = px.bar(df1, x="Gender", y="gender_count", title="Gender Repartition")
 st.plotly_chart(fig)
 
 st.write("Gender Repartition Through the Years")
+## False Dataframe groupby, because an athlete can compete in different disciplines in the same year.
 df2 = (
     df_merged.groupby("Year")["Sex"]
     .value_counts()
