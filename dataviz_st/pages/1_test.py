@@ -47,8 +47,8 @@ st.dataframe(df2.style.format({"Year": lambda x: "{:}".format(x)}))
 fig = px.bar(
     df2,
     x="Year",
-    y="nb",
-    color="Sex",
+    y="nb_gender",
+    color="Gender",
     title="Gender Repartition",
     width=1500,
     height=800,
