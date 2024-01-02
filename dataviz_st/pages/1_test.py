@@ -39,7 +39,7 @@ df2 = (
     df2.groupby("Year")["Sex"]
     .value_counts()
     .reset_index()
-    .rename(columns={"count": "nb"})
+    .rename(columns={"count": "nb_gender", "Sex": "Gender"})
 )
 
 st.dataframe(df2.style.format({"Year": lambda x: "{:}".format(x)}))
