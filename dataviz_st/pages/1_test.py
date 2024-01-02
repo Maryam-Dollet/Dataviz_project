@@ -29,7 +29,14 @@ st.plotly_chart(fig)
 st.write("Gender Repartition Through the Years")
 ## False Dataframe groupby, because an athlete can compete in different disciplines in the same year.
 df2 = (
-    df_merged.groupby("Year")["Sex"]
+    df_merged.groupby(by=["Year", "Name"])["Sex"]
+    .value_counts()
+    .reset_index()
+    .rename(columns={"count": "nb"})
+)
+
+df2 = (
+    df2.groupby("Year")["Sex"]
     .value_counts()
     .reset_index()
     .rename(columns={"count": "nb"})
