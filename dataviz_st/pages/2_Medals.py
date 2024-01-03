@@ -16,6 +16,8 @@ df_medals_sorted = df_athlete_medals.sort_values(
 st.dataframe(df_medals.style.format({"Year": lambda x: "{:}".format(x)}))
 st.dataframe(df_athlete_medals.style.format({"Year": lambda x: "{:}".format(x)}))
 
+# st.dataframe(df_medals[(df_medals["region"] == "Germany") & (df_medals["Year"] == 1896)].style.format({"Year": lambda x: "{:}".format(x)}))
+
 fig = px.choropleth(
     df_athlete_medals,
     locations="region",
