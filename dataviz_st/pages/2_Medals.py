@@ -9,7 +9,7 @@ st.set_page_config(layout="wide")
 st.header("Medal Analysis")
 season = option_menu("Choose Season", ["Summer", "Winter"], orientation="horizontal")
 
-_, df_athlete_medals = get_medals(season)
+df_athlete_medals = get_medals(season)
 # df_medals_sorted = df_athlete_medals.sort_values(
 #     by=["Year", "Gold", "Silver", "Bronze"]
 # ).reset_index(drop=True)

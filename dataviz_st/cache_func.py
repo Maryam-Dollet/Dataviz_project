@@ -71,4 +71,4 @@ def get_medals(filter: str):
     )
     df_medals["Total"] = df_medals["Bronze"] + df_medals["Gold"] + df_medals["Silver"]
 
-    return df, df_medals[["Year", "region", "Gold", "Silver", "Bronze", "Total"]]
+    return df_medals[["Year", "region", "Gold", "Silver", "Bronze", "Total"]]
