@@ -1,4 +1,4 @@
-City,name,latitude,longitude,country,state
+City,city_name,latitude,longitude,country,state
 Barcelona,Barcelona,41.3828939,2.1774322,ES,Catalonia
 London,London,51.5073219,-0.1276474,GB,England
 Antwerpen,Antwerp,51.2211097,4.3997081,BE,Antwerp
