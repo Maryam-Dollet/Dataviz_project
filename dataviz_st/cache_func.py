@@ -20,5 +20,6 @@ def get_regions(filter: str):
         .groupby(by=["Year", "region"])["region"]
         .value_counts()
         .reset_index()
+        .rename(columns={"count": "participants number"})
     )
     return df

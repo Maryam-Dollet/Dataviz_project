@@ -12,7 +12,7 @@ df_regions = get_regions(season)
 fig = px.choropleth(
     df_regions,
     locations="region",
-    color="count",
+    color="participants number",
     hover_name="region",
     animation_frame="Year",
     title=f"Participating Countries of the {season} Games Each Years",
