@@ -40,3 +40,18 @@ def get_city_position(filter: str):
         .reset_index(drop=True)
     )
     return df_merged[["City", "Year", "longitude", "latitude", "description"]]
+
+
+@st.cache_data
+def get_medals():
+    df_merged = load_datasets()
+    df = (
+        df_merged[~df_merged.Medal.isna()]
+        .reset_index(drop=True)
+        .groupby(by=["region", "Year"])["Medal"]
+        .value_counts()
+        .reset_index()
+        .sort_values("Year")
+        .reset_index(drop=True)
+    )
+    return df
