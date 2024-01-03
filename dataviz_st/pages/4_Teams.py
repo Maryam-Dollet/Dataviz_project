@@ -4,6 +4,8 @@ import pandas as pd
 import plotly.express as px
 from cache_func import get_regions, get_city_position
 
+st.set_page_config(layout="wide")
+
 st.header("Team Analysis")
 
 season = option_menu("Choose Season", ["Summer", "Winter"], orientation="horizontal")
@@ -31,5 +33,5 @@ fig = px.scatter_geo(
     lon=df_city_positions.longitude,
     hover_name="description",
 )
-fig.update_layout(width=1000, height=800, title=f"Host Cities of {season} Games")
+fig.update_layout(width=1300, height=1000, title=f"Host Cities of {season} Games")
 st.plotly_chart(fig)

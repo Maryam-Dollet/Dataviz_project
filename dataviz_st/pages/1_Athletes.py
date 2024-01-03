@@ -3,6 +3,7 @@ import pandas as pd
 import plotly.express as px
 from cache_func import load_datasets
 
+st.set_page_config(layout="wide")
 
 df_merged = load_datasets()
 
@@ -48,7 +49,7 @@ fig = px.bar(
     color="Gender",
     title="Gender Repartition",
     barmode="group",
-    width=1500,
+    width=1400,
     height=800,
     text_auto=".2s",
 )

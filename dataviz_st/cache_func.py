@@ -53,5 +53,19 @@ def get_medals():
         .reset_index()
         .sort_values("Year")
         .reset_index(drop=True)
+        .rename(columns={"count": "medal_count"})
     )
-    return df
+
+    df_medals = (
+        df.pivot_table(
+            index=["Year", "region"],
+            columns="Medal",
+            values="medal_count",
+            aggfunc="sum",
+        )
+        .reset_index()
+        .fillna(0)
+    )
+    df_medals["Total"] = df_medals["Bronze"] + df_medals["Gold"] + df_medals["Silver"]
+
+    return df_medals
