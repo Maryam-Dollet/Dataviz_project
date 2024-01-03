@@ -9,19 +9,12 @@ st.set_page_config(layout="wide")
 st.header("Medal Analysis")
 season = option_menu("Choose Season", ["Summer", "Winter"], orientation="horizontal")
 
-df_medals, df_athlete_medals = get_medals(season)
+_, df_athlete_medals = get_medals(season)
 # df_medals_sorted = df_athlete_medals.sort_values(
 #     by=["Year", "Gold", "Silver", "Bronze"]
 # ).reset_index(drop=True)
-df_total_medal_type = (
-    df_medals.groupby(by=["Year", "region", "Medal"])["Medal"]
-    .value_counts()
-    .reset_index()
-    .rename(columns={"count": "medal_count"})
-)
-st.dataframe(df_medals.style.format({"Year": lambda x: "{:}".format(x)}))
+# st.dataframe(df_medals.style.format({"Year": lambda x: "{:}".format(x)}))
 st.dataframe(df_athlete_medals.style.format({"Year": lambda x: "{:}".format(x)}))
-st.dataframe(df_total_medal_type.style.format({"Year": lambda x: "{:}".format(x)}))
 
 # st.dataframe(df_medals[(df_medals["region"] == "USA") & (df_medals["Year"] == 1896)].style.format({"Year": lambda x: "{:}".format(x)}))
 # st.dataframe(df_medals[(df_medals["region"] == "Germany") & (df_medals["Year"] == 1896)].style.format({"Year": lambda x: "{:}".format(x)}))
@@ -41,25 +34,8 @@ fig = px.choropleth(
 
 st.plotly_chart(fig)
 
-# fig = px.bar(
-#     df_total_medal_type,
-#     x="region",
-#     y="medal_count",
-#     color="Medal",
-#     title=f"{season} Game Medals per Country",
-#     barmode="group",
-#     width=1400,
-#     height=800,
-#     text_auto=".1s",
-#     animation_frame="Year",
-#     animation_group="medal_count",
-# )
-# fig.update_xaxes(tickangle=45)
-# # fig["layout"].pop("updatemenus")
-# st.plotly_chart(fig)
-
 fig = px.bar(
-    df_athlete_medals,
+    df_athlete_medals.sort_values(by=["Year", "Gold", "Silver", "Bronze"]),
     x="region",
     y=["Gold", "Silver", "Bronze"],
     title=f"{season} Game Medals per Country",
