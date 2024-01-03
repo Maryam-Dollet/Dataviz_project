@@ -14,7 +14,12 @@ df_athlete_medals = get_medals(season)
 #     by=["Year", "Gold", "Silver", "Bronze"]
 # ).reset_index(drop=True)
 # st.dataframe(df_medals.style.format({"Year": lambda x: "{:}".format(x)}))
-st.dataframe(df_athlete_medals.style.format({"Year": lambda x: "{:}".format(x)}))
+st.dataframe(
+    df_athlete_medals.sort_values(by=["Year", "Gold", "Bronze", "Silver"])
+    .reset_index(drop=True)[::-1]
+    .reset_index(drop=True)
+    .style.format({"Year": lambda x: "{:}".format(x)})
+)
 
 # st.dataframe(df_medals[(df_medals["region"] == "USA") & (df_medals["Year"] == 1896)].style.format({"Year": lambda x: "{:}".format(x)}))
 # st.dataframe(df_medals[(df_medals["region"] == "Germany") & (df_medals["Year"] == 1896)].style.format({"Year": lambda x: "{:}".format(x)}))
@@ -49,3 +54,18 @@ fig = px.bar(
 fig.update_xaxes(tickangle=45)
 # fig["layout"].pop("updatemenus")
 st.plotly_chart(fig)
+
+st.subheader("Winner of the Game")
+year = st.select_slider("Select the Year", options=df_athlete_medals.Year.unique())
+
+df_filtered = (
+    df_athlete_medals[df_athlete_medals["Year"] == year]
+    .sort_values(by=["Gold", "Bronze", "Silver"], ascending=False)
+    .reset_index(drop=True)
+)
+
+st.dataframe(
+    df_filtered.head(3)[["region", "Gold", "Bronze", "Silver"]].style.format(
+        {"Year": lambda x: "{:}".format(x)}
+    )
+)
