@@ -85,6 +85,7 @@ sqlite=3.41.2=h2bbff1b_0
 stack_data=0.6.2=pyhd8ed1ab_0
 statsmodels=0.14.1=pypi_0
 streamlit=1.29.0=pypi_0
+streamlit-option-menu=0.3.6=pypi_0
 tenacity=8.2.3=pypi_0
 tk=8.6.12=h2bbff1b_0
 toml=0.10.2=pypi_0

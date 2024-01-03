@@ -5,7 +5,7 @@ from cache_func import get_regions
 
 st.header("Team Analysis")
 
-df_regions = get_regions()
+df_regions = get_regions("Summer")
 
 fig = px.choropleth(
     df_regions,
