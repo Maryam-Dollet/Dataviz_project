@@ -18,6 +18,8 @@ fig = px.choropleth(
     title="Countries per Year",
     color_continuous_scale="Viridis",
     locationmode="country names",
+    width=1200,
+    height=800,
 )
 
 st.plotly_chart(fig)
