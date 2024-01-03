@@ -1,0 +1,43 @@
+City,name,latitude,longitude,country,state
+Barcelona,Barcelona,41.3828939,2.1774322,ES,Catalonia
+London,London,51.5073219,-0.1276474,GB,England
+Antwerpen,Antwerp,51.2211097,4.3997081,BE,Antwerp
+Paris,Paris,48.8588897,2.3200410217200766,FR,Ile-de-France
+Calgary,Calgary,51.0460954,-114.065465,CA,Alberta
+Albertville,Albertville,45.6754622,6.3925417,FR,Auvergne-Rhône-Alpes
+Lillehammer,Lillehammer,61.1145451,10.4670073,NO,
+Los Angeles,Los Angeles,34.0536909,-118.242766,US,California
+Salt Lake City,Salt Lake City,40.7596198,-111.8867975,US,Utah
+Helsinki,Helsinki,60.1674881,24.9427473,FI,
+Lake Placid,Village of Lake Placid,44.279621,-73.979874,US,New York
+Sydney,Sydney,-33.8698439,151.2082848,AU,New South Wales
+Atlanta,Atlanta,33.7489924,-84.3902644,US,Georgia
+Stockholm,Stockholm,59.3251172,18.0710935,SE,
+Sochi,Sochi,43.5854823,39.723109,RU,Krasnodar Krai
+Nagano,Nagano,36.6485851,138.1947664,JP,
+Torino,Turin,45.0677551,7.6824892,IT,Piedmont
+Beijing,Beijing,39.906217,116.3912757,CN,Beijing
+Rio de Janeiro,Rio de Janeiro,-22.9110137,-43.2093727,BR,Rio de Janeiro
+Athina,Athens,37.9839412,23.7283052,GR,Attica
+Squaw Valley,Squaw Valley,36.7402261,-119.246785,US,California
+Innsbruck,Innsbruck,47.2654296,11.3927685,AT,Tyrol
+Sarajevo,City of Sarajevo,43.8519774,18.3866868,BA,Federation of Bosnia and Herzegovina
+Mexico City,Mexico City,19.4326296,-99.1331785,MX,
+Munich,Munich,48.1371079,11.5753822,DE,Bavaria
+Seoul,Seoul,37.5666791,126.9782914,KR,
+Berlin,Berlin,52.5170365,13.3888599,DE,
+Oslo,Oslo,59.9133301,10.7389701,NO,
+Cortina d'Ampezzo,Cortina d'Ampezzo,46.5383332,12.1373506,IT,Veneto
+Melbourne,Melbourne,-37.8142176,144.9631608,AU,Victoria
+Roma,Rome,41.8933203,12.4829321,IT,Lazio
+Amsterdam,Amsterdam,52.3727598,4.8936041,NL,North Holland
+Montreal,Montreal,45.5031824,-73.5698065,CA,Quebec
+Moskva,Moscow,55.7504461,37.6174943,RU,Moscow
+Tokyo,Tokyo,35.6828387,139.7594549,JP,
+Vancouver,Vancouver,49.2608724,-123.113952,CA,British Columbia
+Grenoble,Grenoble,45.1875602,5.7357819,FR,Auvergne-Rhône-Alpes
+Sapporo,Sapporo,43.061936,141.3542924,JP,
+Chamonix,Chamonix-Mont-Blanc,45.9246705,6.8727506,FR,Auvergne-Rhône-Alpes
+St. Louis,Saint Louis,38.6319657,-90.2428756,US,Missouri
+Sankt Moritz,Sankt Moritz,46.4978958,9.8392428,CH,Grisons
+Garmisch-Partenkirchen,Garmisch-Partenkirchen,47.4923741,11.0962815,DE,Bavaria
