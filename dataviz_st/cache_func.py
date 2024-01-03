@@ -43,8 +43,9 @@ def get_city_position(filter: str):
 
 
 @st.cache_data
-def get_medals():
+def get_medals(filter: str):
     df_merged = load_datasets()
+    df_merged = df_merged[df_merged["Season"] == filter]
     df = (
         df_merged[~df_merged.Medal.isna()]
         .reset_index(drop=True)
@@ -69,4 +70,4 @@ def get_medals():
     )
     df_medals["Total"] = df_medals["Bronze"] + df_medals["Gold"] + df_medals["Silver"]
 
-    return df_medals
+    return df, df_medals
