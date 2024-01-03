@@ -65,6 +65,7 @@ def get_medals():
         )
         .reset_index()
         .fillna(0)
+        .astype({"Gold": "int32", "Silver": "int32", "Bronze": "int32"})
     )
     df_medals["Total"] = df_medals["Bronze"] + df_medals["Gold"] + df_medals["Silver"]
 
