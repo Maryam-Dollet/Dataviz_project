@@ -1,11 +1,13 @@
 import streamlit as st
+from streamlit_option_menu import option_menu
 import pandas as pd
 import plotly.express as px
 from cache_func import get_regions
 
 st.header("Team Analysis")
 
-df_regions = get_regions("Summer")
+season = option_menu("Choose Season", ["Summer", "Winter"], orientation="horizontal")
+df_regions = get_regions(season)
 
 fig = px.choropleth(
     df_regions,
