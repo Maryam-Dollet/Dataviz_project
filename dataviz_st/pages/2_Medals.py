@@ -55,7 +55,7 @@ fig.update_xaxes(tickangle=45)
 # fig["layout"].pop("updatemenus")
 st.plotly_chart(fig)
 
-st.subheader("Winner of the Game")
+st.subheader("Winners of the Game")
 year = st.select_slider("Select the Year", options=df_athlete_medals.Year.unique())
 
 df_filtered = (
