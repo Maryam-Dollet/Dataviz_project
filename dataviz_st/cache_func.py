@@ -23,3 +23,12 @@ def get_regions(filter: str):
         .rename(columns={"count": "participants number"})
     )
     return df
+
+
+@st.cache_data
+def get_city_position(filter: str):
+    df_merged = load_datasets()
+    city_positions = pd.read_csv("city_position.csv", sep=",")
+    df_merged = df_merged.merge(city_positions, how="left", on="City")
+    df_merged = df_merged[df_merged["Season"] == filter]
+    return df_merged
