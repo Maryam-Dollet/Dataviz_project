@@ -30,5 +30,13 @@ def get_city_position(filter: str):
     df_merged = load_datasets()
     city_positions = pd.read_csv("city_position.csv", sep=",")
     df_merged = df_merged.merge(city_positions, how="left", on="City")
-    df_merged = df_merged[df_merged["Season"] == filter]
-    return df_merged
+    df_merged["description"] = (
+        df_merged["City"].astype(str) + " " + df_merged["Year"].astype(str)
+    )
+    df_merged = (
+        df_merged[df_merged["Season"] == filter]
+        .drop_duplicates(subset=["City", "Year"])
+        .sort_values("Year")
+        .reset_index(drop=True)
+    )
+    return df_merged[["City", "Year", "longitude", "latitude", "description"]]
