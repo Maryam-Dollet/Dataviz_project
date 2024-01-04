@@ -78,7 +78,7 @@ fig = px.bar(
     top_10_countries_per_year_filtered,
     x="region",
     y="participants number",
-    title=f"{season} Game Medals Evolution of Top 10 Countries over the years",
+    title=f"{season} Game Number of Athletes Evolution of Top 10 Countries over the years",
     color="region",
     width=1400,
     height=700,
