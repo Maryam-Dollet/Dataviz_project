@@ -71,6 +71,7 @@ top_10_countries_per_year = (
 )
 # st.dataframe(top_10_countries_per_year)
 
+st.subheader("Number of Athletes over the Years")
 year = st.select_slider(
     "Select the Year", options=top_10_countries_per_year.Year.unique()
 )
