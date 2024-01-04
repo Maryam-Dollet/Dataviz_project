@@ -35,24 +35,40 @@ df_filtered = (
     .reset_index(drop=True)[["region", "Gold", "Silver", "Bronze", "Total"]]
 )
 
-col1, col2, col3 = st.columns(3)
+col4, col1, col2, col3, col5 = st.columns(5)
 
 with col1:
     st.metric("2nd Place :second_place_medal:", value=f"{df_filtered.iloc[1].region}")
 
 with col2:
     st.metric("1st Place :first_place_medal:", value=f"{df_filtered.iloc[0].region}")
-    city = df_merged[df_merged["Year"] == year].iloc[0].City
+
+with col3:
+    st.metric("3rd Place :third_place_medal:", value=f"{df_filtered.iloc[2].region}")
+
+col21, col22 = st.columns(2)
+city = df_merged[df_merged["Year"] == year].iloc[0].City
+df_filtered.insert(0, "Place", df_filtered.index + 1)
+
+with col21:
     st.subheader(f"Leaderboard {city} {year} {season} Games")
-    df_filtered.insert(0, "Place", df_filtered.index + 1)
     st.dataframe(
         df_filtered.style.format({"Year": lambda x: "{:}".format(x)}),
         hide_index=True,
         width=500,
     )
 
-with col3:
-    st.metric("3rd Place :third_place_medal:", value=f"{df_filtered.iloc[2].region}")
+with col22:
+    fig = px.bar(
+        df_filtered.head(3),
+        x="region",
+        y=["Gold", "Silver", "Bronze"],
+        barmode="group",
+        text_auto=".1s",
+        title="Winner Medal Distribution",
+    )
+    st.plotly_chart(fig)
+
 
 fig = px.choropleth(
     df_athlete_medals,
