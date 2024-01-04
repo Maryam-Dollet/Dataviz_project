@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 from streamlit_option_menu import option_menu
-from cache_func import get_medals
+from cache_func import get_medals, load_datasets
 
 st.set_page_config(layout="wide")
 
@@ -11,6 +11,7 @@ with st.sidebar:
     season = option_menu("Choose Season", ["Summer", "Winter"])
 
 df_athlete_medals = get_medals(season)
+df_merged = load_datasets()
 # df_medals_sorted = df_athlete_medals.sort_values(
 #     by=["Year", "Gold", "Silver", "Bronze"]
 # ).reset_index(drop=True)
@@ -41,7 +42,8 @@ with col1:
 
 with col2:
     st.metric("1st Place", value=f"{df_filtered.iloc[0].region}")
-    st.subheader(f"Leaderboard {year}")
+    city = df_merged[df_merged["Year"] == year].iloc[0].City
+    st.subheader(f"Leaderboard {city} {year} {season} Games")
     df_filtered.insert(0, "Place", df_filtered.index + 1)
     st.dataframe(
         df_filtered.style.format({"Year": lambda x: "{:}".format(x)}), hide_index=True
