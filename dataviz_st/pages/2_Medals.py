@@ -100,3 +100,26 @@ fig = px.bar(
 fig.update_xaxes(tickangle=45)
 # fig["layout"].pop("updatemenus")
 st.plotly_chart(fig)
+
+# st.dataframe(df_athlete_medals.groupby("Year").apply(lambda x: x.nlargest(10,['Gold',"Silver", "Bronze"])).reset_index(drop=True))
+df_top_10 = (
+    df_athlete_medals.groupby("Year")
+    .apply(lambda x: x.nlargest(10, ["Gold", "Silver", "Bronze"]))
+    .reset_index(drop=True)
+)
+
+fig = px.bar(
+    df_top_10,
+    x="region",
+    y=["Gold", "Silver", "Bronze"],
+    title=f"{season} Game Medals Evolution of Top 10 Countries over the years",
+    barmode="group",
+    width=1400,
+    height=800,
+    text_auto=".1s",
+    animation_frame="Year",
+    # animation_group="medal_count",
+)
+fig.update_xaxes(tickangle=45)
+# fig["layout"].pop("updatemenus")
+st.plotly_chart(fig)
