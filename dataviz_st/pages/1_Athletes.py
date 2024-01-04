@@ -13,7 +13,8 @@ st.dataframe(df_merged)
 
 st.subheader("Gender Analysis")
 df1 = (
-    df_merged.value_counts("Sex")
+    df_merged.drop_duplicates(subset=["Year", "ID"])
+    .value_counts("Sex")
     .reset_index()
     .rename(columns={"Sex": "Gender", "count": "gender_count"})
 )
@@ -31,14 +32,8 @@ st.plotly_chart(fig)
 # st.write("Gender Repartition Through the Years")
 ## False Dataframe groupby, because an athlete can compete in different disciplines in the same year.
 df2 = (
-    df_merged.groupby(by=["Year", "Name"])["Sex"]
-    .value_counts()
-    .reset_index()
-    .rename(columns={"count": "nb"})
-)
-
-df2 = (
-    df2.groupby("Year")["Sex"]
+    df_merged.drop_duplicates(subset=["Year", "ID"])
+    .groupby("Year")["Sex"]
     .value_counts()
     .reset_index()
     .rename(columns={"count": "nb_gender", "Sex": "Gender"})
