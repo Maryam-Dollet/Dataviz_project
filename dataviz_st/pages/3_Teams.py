@@ -20,7 +20,7 @@ fig = px.choropleth(
     hover_name="region",
     animation_frame="Year",
     title=f"Participating Countries of the {season} Games Each Year",
-    color_continuous_scale="Viridis",
+    color_continuous_scale="Purp",
     locationmode="country names",
     width=1200,
     height=800,
@@ -40,6 +40,8 @@ fig = px.line(
     height=800,
 )
 # fig.update_xaxes(type="category")
+fig.update_traces(mode="markers+lines", hovertemplate=None)
+fig.update_layout(hovermode="x unified")
 st.plotly_chart(fig)
 
 top_10_countries = (
