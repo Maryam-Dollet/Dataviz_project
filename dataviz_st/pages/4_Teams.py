@@ -32,10 +32,11 @@ fig = px.line(
     x="Year",
     y="participants number",
     color="region",
-    title="Number of athletes per year and per country",
+    title=f"Number of athletes per year and per country for {season} Games",
     width=1450,
     height=800,
 )
+fig.update_xaxes(type="category")
 st.plotly_chart(fig)
 
 fig = px.scatter_geo(
