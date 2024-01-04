@@ -38,19 +38,21 @@ df_filtered = (
 col1, col2, col3 = st.columns(3)
 
 with col1:
-    st.metric("2nd Place", value=f"{df_filtered.iloc[1].region}")
+    st.metric("2nd Place :second_place_medal:", value=f"{df_filtered.iloc[1].region}")
 
 with col2:
-    st.metric("1st Place", value=f"{df_filtered.iloc[0].region}")
+    st.metric("1st Place :first_place_medal:", value=f"{df_filtered.iloc[0].region}")
     city = df_merged[df_merged["Year"] == year].iloc[0].City
     st.subheader(f"Leaderboard {city} {year} {season} Games")
     df_filtered.insert(0, "Place", df_filtered.index + 1)
     st.dataframe(
-        df_filtered.style.format({"Year": lambda x: "{:}".format(x)}), hide_index=True
+        df_filtered.style.format({"Year": lambda x: "{:}".format(x)}),
+        hide_index=True,
+        width=500,
     )
 
 with col3:
-    st.metric("3rd Place", value=f"{df_filtered.iloc[2].region}")
+    st.metric("3rd Place :third_place_medal:", value=f"{df_filtered.iloc[2].region}")
 
 fig = px.choropleth(
     df_athlete_medals,
