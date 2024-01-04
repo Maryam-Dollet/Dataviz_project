@@ -15,7 +15,7 @@ def get_regions(filter: str):
     df_merged = load_datasets()
     df_merged = df_merged[df_merged["Season"] == filter]
     df = (
-        df_merged.drop_duplicates(subset=["Year", "Name"])
+        df_merged.drop_duplicates(subset=["Year", "ID"])
         .sort_values("Year")
         .groupby(by=["Year", "region"])["region"]
         .value_counts()

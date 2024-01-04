@@ -27,6 +27,17 @@ fig = px.choropleth(
 
 st.plotly_chart(fig)
 
+fig = px.line(
+    df_regions,
+    x="Year",
+    y="participants number",
+    color="region",
+    title="Number of athletes per year and per country",
+    width=1450,
+    height=800,
+)
+st.plotly_chart(fig)
+
 fig = px.scatter_geo(
     df_city_positions,
     lat=df_city_positions.latitude,

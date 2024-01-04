@@ -9,7 +9,7 @@ df_merged = load_datasets()
 
 st.header("Athletes Analysis")
 
-# st.dataframe(df_merged)
+st.dataframe(df_merged)
 
 st.subheader("Gender Analysis")
 df1 = (
@@ -62,3 +62,11 @@ fig.update_traces(
 )
 fig.update_xaxes(type="category")
 st.plotly_chart(fig)
+
+# st.subheader("Number of Athletes per Country over the years")
+
+# no_duplicates = df_merged.drop_duplicates(subset= ['Games', 'ID'])
+# games_nd = no_duplicates[no_duplicates.Season == 'Summer']
+
+# athletes_per_country = games_nd.groupby(['Year', 'region']).size().reset_index(name='Nb of athletes')
+# st.dataframe(athletes_per_country)
