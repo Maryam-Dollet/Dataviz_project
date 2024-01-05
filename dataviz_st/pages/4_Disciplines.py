@@ -1,5 +1,6 @@
 import streamlit as st
 import plotly.express as px
+import numpy as np
 from cache_func import load_datasets
 from streamlit_option_menu import option_menu
 
@@ -44,3 +45,23 @@ fig.update_layout(barmode="stack", xaxis={"categoryorder": "total descending"})
 fig.update_xaxes(tickangle=45)
 
 st.plotly_chart(fig)
+
+st.dataframe(games)
+
+unique_events = games.drop_duplicates(subset=["Year", "Sport", "Event"])[
+    ["Year", "Sport", "Event"]
+].sort_values("Year", ignore_index=True)
+
+st.dataframe(unique_events)
+
+conditions = [
+    (unique_events["Event"].str.contains("Men")),
+    (unique_events["Event"].str.contains("Women")),
+    (unique_events["Event"].str.contains("Mixed")),
+]
+
+values = ["Men", "Women", "Mixed"]
+
+unique_events["category"] = np.select(conditions, values, default=0)
+
+st.dataframe(unique_events)
