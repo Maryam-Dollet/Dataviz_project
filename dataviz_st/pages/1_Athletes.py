@@ -73,47 +73,60 @@ st.subheader(f"Average Weight and Height per Discipline of {season} Games")
 
 df_merged_season = df_merged[df_merged["Season"] == season]
 
-df_avg_weight_height_men = (
-    df_merged_season[df_merged_season["Sex"] == "M"]
-    .dropna(subset=["Height", "Weight"])
-    .drop_duplicates(subset=["ID", "Sport"])
-    .groupby("Sport")
-    .agg({"Height": "mean", "Weight": "mean"})
-)
-st.dataframe(df_avg_weight_height_men)
+# df_avg_weight_height_men = (
+#     df_merged_season[df_merged_season["Sex"] == "M"]
+#     .dropna(subset=["Height", "Weight"])
+#     .drop_duplicates(subset=["ID", "Sport"])
+#     .groupby("Sport")
+#     .agg({"Height": "mean", "Weight": "mean"})
+# )
+# st.dataframe(df_avg_weight_height_men)
 
-df_avg_weight_height_women = (
-    df_merged_season[df_merged_season["Sex"] == "F"]
-    .dropna(subset=["Height", "Weight"])
-    .drop_duplicates(subset=["ID", "Sport"])
-    .groupby("Sport")
-    .agg({"Height": "mean", "Weight": "mean"})
-)
-st.dataframe(df_avg_weight_height_women)
+# df_avg_weight_height_women = (
+#     df_merged_season[df_merged_season["Sex"] == "F"]
+#     .dropna(subset=["Height", "Weight"])
+#     .drop_duplicates(subset=["ID", "Sport"])
+#     .groupby("Sport")
+#     .agg({"Height": "mean", "Weight": "mean"})
+# )
+# st.dataframe(df_avg_weight_height_women)
 
-st.markdown("#### Men")
+st.markdown("#### Men Height")
 df_box_men = (
     df_merged_season[df_merged_season["Sex"] == "M"]
     .dropna(subset=["Height", "Weight"])
     .drop_duplicates(subset=["ID", "Sport"])
 )
-st.dataframe(df_box_men)
+# st.dataframe(df_box_men)
 
 fig = px.box(df_box_men, x="Sport", y="Height", width=1400, height=800)
 fig.update_xaxes(tickangle=45)
 st.plotly_chart(fig)
 
-st.markdown("#### Women")
+st.markdown("#### Men Weight")
+
+fig = px.box(df_box_men, x="Sport", y="Weight", width=1400, height=800)
+fig.update_xaxes(tickangle=45)
+st.plotly_chart(fig)
+
+st.markdown("#### Women Height")
 df_box_women = (
     df_merged_season[df_merged_season["Sex"] == "F"]
     .dropna(subset=["Height", "Weight"])
     .drop_duplicates(subset=["ID", "Sport"])
 )
-st.dataframe(df_box_women)
+# st.dataframe(df_box_women)
 
 fig = px.box(df_box_women, x="Sport", y="Height", width=1400, height=800)
 fig.update_xaxes(tickangle=45)
 st.plotly_chart(fig)
+
+st.markdown("#### Women Weight")
+
+fig = px.box(df_box_women, x="Sport", y="Weight", width=1400, height=800)
+fig.update_xaxes(tickangle=45)
+st.plotly_chart(fig)
+
 
 st.subheader("Athletes with the most Medals")
 
