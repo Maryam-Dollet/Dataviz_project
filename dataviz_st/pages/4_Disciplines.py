@@ -81,7 +81,8 @@ pie_fig = px.pie(
 )
 st.plotly_chart(pie_fig)
 
-year = year = st.select_slider("Select the Year", options=unique_events.Year.unique())
+st.subheader("Category Distribution through the years")
+year = st.select_slider("Select the Year", options=unique_events.Year.unique())
 
 category_count_filtered = (
     unique_events[unique_events["Year"] == year].value_counts("category").reset_index()
@@ -96,3 +97,34 @@ pie_fig = px.pie(
     height=600,
 )
 st.plotly_chart(pie_fig)
+
+st.subheader("Sport Evolution through the years")
+
+year2 = st.select_slider(
+    "Select the Year ", options=games.sort_values("Year").Year.unique()
+)
+
+# st.dataframe(games[games["Year"] == year2])
+
+games_event_count = (
+    games[games["Year"] == year2]
+    .drop_duplicates(subset=["Sport", "Event"])
+    .groupby("Sport")["Sport"]
+    .value_counts()
+    .reset_index()
+    .sort_values("count", ascending=False, ignore_index=True)
+)
+# st.dataframe(games_event_count)
+
+fig = px.bar(
+    games_event_count,
+    x="Sport",
+    y="count",
+    color="Sport",
+    width=1300,
+    height=700,
+    labels={"count": "Number of Events"},
+    title=f"Number of Events per Sport of the {season} Games {year2}",
+)
+fig.update_xaxes(tickangle=45)
+st.plotly_chart(fig)
