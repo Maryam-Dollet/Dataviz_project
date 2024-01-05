@@ -91,7 +91,7 @@ df_merged_season = df_merged[df_merged["Season"] == season]
 # )
 # st.dataframe(df_avg_weight_height_women)
 
-st.markdown("#### Men Height")
+st.markdown("#### Men's Height")
 df_box_men = (
     df_merged_season[df_merged_season["Sex"] == "M"]
     .dropna(subset=["Height", "Weight"])
@@ -99,17 +99,17 @@ df_box_men = (
 )
 # st.dataframe(df_box_men)
 
-fig = px.box(df_box_men, x="Sport", y="Height", width=1400, height=800)
+fig = px.box(df_box_men, x="Sport", y="Height", width=1300, height=800)
 fig.update_xaxes(tickangle=45)
 st.plotly_chart(fig)
 
-st.markdown("#### Men Weight")
+st.markdown("#### Men's Weight")
 
-fig = px.box(df_box_men, x="Sport", y="Weight", width=1400, height=800)
+fig = px.box(df_box_men, x="Sport", y="Weight", width=1300, height=800)
 fig.update_xaxes(tickangle=45)
 st.plotly_chart(fig)
 
-st.markdown("#### Women Height")
+st.markdown("#### Women's Height")
 df_box_women = (
     df_merged_season[df_merged_season["Sex"] == "F"]
     .dropna(subset=["Height", "Weight"])
@@ -117,13 +117,13 @@ df_box_women = (
 )
 # st.dataframe(df_box_women)
 
-fig = px.box(df_box_women, x="Sport", y="Height", width=1400, height=800)
+fig = px.box(df_box_women, x="Sport", y="Height", width=1300, height=800)
 fig.update_xaxes(tickangle=45)
 st.plotly_chart(fig)
 
-st.markdown("#### Women Weight")
+st.markdown("#### Women's Weight")
 
-fig = px.box(df_box_women, x="Sport", y="Weight", width=1400, height=800)
+fig = px.box(df_box_women, x="Sport", y="Weight", width=1300, height=800)
 fig.update_xaxes(tickangle=45)
 st.plotly_chart(fig)
 
@@ -142,6 +142,7 @@ fig = px.bar(
     orientation="h",
     width=1400,
     height=800,
+    title="Top 15 Athletes with the most Medals",
 )
 # fig.update_layout(yaxis={'categoryorder':'total descending'})
 st.plotly_chart(fig)
