@@ -66,7 +66,7 @@ st.plotly_chart(fig)
 
 # athletes_per_country = games_nd.groupby(['Year', 'region']).size().reset_index(name='Nb of athletes')
 # st.dataframe(athletes_per_country)
-
+st.subheader("Athletes Height and Weight per Sport")
 season = option_menu("Choose Season", ["Summer", "Winter"], orientation="horizontal")
 
 # st.subheader(f"Average Weight and Height per Discipline of {season} Games")
@@ -146,3 +146,67 @@ fig = px.bar(
 )
 # fig.update_layout(yaxis={'categoryorder':'total descending'})
 st.plotly_chart(fig)
+
+st.subheader("Correlation Medal, Height and Weight")
+
+season2 = option_menu("Choose Season ", ["Summer", "Winter"], orientation="horizontal")
+
+filtered_season_df = df_merged[df_merged.Season == season2]
+
+unique_sport = filtered_season_df.Sport.unique()
+unique_gender = filtered_season_df.Sex.unique()
+
+option_sport = st.selectbox("Select Sport", tuple(unique_sport))
+option_gender = st.selectbox("Select Gender", tuple(unique_gender))
+
+selected_df = filtered_season_df[
+    (filtered_season_df.Sport == option_sport)
+    & (filtered_season_df.Sex == option_gender)
+].dropna(subset=["Age", "Height", "Weight"])
+
+selected_df["Medal"] = selected_df["Medal"].fillna("No medal")
+
+# st.dataframe(selected_df)
+
+if len(selected_df) == 0:
+    st.write("No Data")
+else:
+    correlation_matrix = selected_df[["Age", "Height", "Weight", "Medal"]]
+
+    correlation_matrix["Medal"] = correlation_matrix["Medal"].replace(
+        ["No medal", "Gold", "Silver", "Bronze"], [0, 1, 1, 1]
+    )
+
+    # st.dataframe(correlation_matrix)
+
+    fig = px.imshow(correlation_matrix.corr(), text_auto=True)
+    st.plotly_chart(fig)
+
+    correlation_matrix = (
+        correlation_matrix.groupby(["Height", "Weight"])
+        .agg({"Medal": "sum", "Height": "count"})
+        .rename(columns={"Height": "Nb of athletes"})
+        .reset_index()
+    )
+
+    correlation_matrix["Proportion of medals"] = (
+        correlation_matrix["Medal"] / correlation_matrix["Nb of athletes"]
+    )
+
+    correlation_matrix = correlation_matrix[
+        correlation_matrix["Proportion of medals"] != 0
+    ]
+
+    gtext = "Women" if option_gender == "F" else "Men"
+
+    fig = px.scatter(
+        correlation_matrix,
+        x="Height",
+        y="Weight",
+        size="Proportion of medals",
+        color="Nb of athletes",
+        title=f"Optimal Height and Weight to win a medal in {option_sport} for Athletes competing in {gtext} Category",
+        width=1400,
+        height=800,
+    )
+    st.plotly_chart(fig)
