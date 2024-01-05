@@ -91,7 +91,7 @@ df_merged_season = df_merged[df_merged["Season"] == season]
 # )
 # st.dataframe(df_avg_weight_height_women)
 
-st.markdown("#### Men's Height")
+st.markdown(f"#### Men's Height {season} Sports")
 df_box_men = (
     df_merged_season[df_merged_season["Sex"] == "M"]
     .dropna(subset=["Height", "Weight"])
@@ -99,17 +99,17 @@ df_box_men = (
 )
 # st.dataframe(df_box_men)
 
-fig = px.box(df_box_men, x="Sport", y="Height", width=1300, height=800)
+fig = px.box(df_box_men, x="Sport", y="Height", width=1300, height=800, color="Sport")
 fig.update_xaxes(tickangle=45)
 st.plotly_chart(fig)
 
-st.markdown("#### Men's Weight")
+st.markdown(f"#### Men's Weight {season} Sports")
 
-fig = px.box(df_box_men, x="Sport", y="Weight", width=1300, height=800)
+fig = px.box(df_box_men, x="Sport", y="Weight", width=1300, height=800, color="Sport")
 fig.update_xaxes(tickangle=45)
 st.plotly_chart(fig)
 
-st.markdown("#### Women's Height")
+st.markdown(f"#### Women's Height {season} Sports")
 df_box_women = (
     df_merged_season[df_merged_season["Sex"] == "F"]
     .dropna(subset=["Height", "Weight"])
@@ -117,13 +117,13 @@ df_box_women = (
 )
 # st.dataframe(df_box_women)
 
-fig = px.box(df_box_women, x="Sport", y="Height", width=1300, height=800)
+fig = px.box(df_box_women, x="Sport", y="Height", width=1300, height=800, color="Sport")
 fig.update_xaxes(tickangle=45)
 st.plotly_chart(fig)
 
-st.markdown("#### Women's Weight")
+st.markdown(f"#### Women's Weight {season} Sports")
 
-fig = px.box(df_box_women, x="Sport", y="Weight", width=1300, height=800)
+fig = px.box(df_box_women, x="Sport", y="Weight", width=1300, height=800, color="Sport")
 fig.update_xaxes(tickangle=45)
 st.plotly_chart(fig)
 
