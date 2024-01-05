@@ -8,7 +8,7 @@ st.set_page_config(layout="wide")
 
 df_merged = load_datasets()
 
-st.header("Athletes Analysis")
+st.header("Athlete Analysis")
 
 st.dataframe(df_merged)
 
@@ -67,9 +67,9 @@ st.plotly_chart(fig)
 # athletes_per_country = games_nd.groupby(['Year', 'region']).size().reset_index(name='Nb of athletes')
 # st.dataframe(athletes_per_country)
 
-season = option_menu("Choose Season", ["Summer", "Winter"])
+season = option_menu("Choose Season", ["Summer", "Winter"], orientation="horizontal")
 
-st.subheader(f"Average Weight and Height per Discipline of {season} Games")
+# st.subheader(f"Average Weight and Height per Discipline of {season} Games")
 
 df_merged_season = df_merged[df_merged["Season"] == season]
 
