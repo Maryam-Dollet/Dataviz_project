@@ -48,11 +48,12 @@ st.plotly_chart(fig)
 
 st.dataframe(games)
 
+
 unique_events = games.drop_duplicates(subset=["Year", "Sport", "Event"])[
     ["Year", "Sport", "Event"]
 ].sort_values("Year", ignore_index=True)
 
-st.dataframe(unique_events)
+# st.dataframe(unique_events)
 
 conditions = [
     (unique_events["Event"].str.contains("Men")),
@@ -64,4 +65,34 @@ values = ["Men", "Women", "Mixed"]
 
 unique_events["category"] = np.select(conditions, values, default=0)
 
-st.dataframe(unique_events)
+# st.dataframe(unique_events)
+
+category_count = unique_events.value_counts("category").reset_index()
+
+# st.dataframe(category_count)
+
+pie_fig = px.pie(
+    category_count,
+    values="count",
+    names="category",
+    title=f"Category Distribution in {season} Games all years combined",
+    width=800,
+    height=600,
+)
+st.plotly_chart(pie_fig)
+
+year = year = st.select_slider("Select the Year", options=unique_events.Year.unique())
+
+category_count_filtered = (
+    unique_events[unique_events["Year"] == year].value_counts("category").reset_index()
+)
+
+pie_fig = px.pie(
+    category_count_filtered,
+    values="count",
+    names="category",
+    title=f"Category Distribution in {season} Games {year}",
+    width=800,
+    height=600,
+)
+st.plotly_chart(pie_fig)
