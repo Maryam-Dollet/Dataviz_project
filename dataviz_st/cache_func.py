@@ -97,7 +97,7 @@ def get_medals_athletes():
 
     return (
         df_medals[["ID", "Name", "Gold", "Silver", "Bronze", "Total"]]
-        .sort_values(by=["Gold", "Silver", "Bronze"], ascending=False)
+        .sort_values(by=["Total", "Gold", "Silver", "Bronze"], ascending=False)
         .reset_index(drop=True)
     )
 

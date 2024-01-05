@@ -66,6 +66,16 @@ st.plotly_chart(fig)
 # athletes_per_country = games_nd.groupby(['Year', 'region']).size().reset_index(name='Nb of athletes')
 # st.dataframe(athletes_per_country)
 
+st.subheader("Average Weight and Height per Discipline")
+
+df_avg_weight_height = (
+    df_merged.dropna(subset=["Height", "Weight"])
+    .drop_duplicates(subset=["ID", "Sport"])
+    .groupby("Sport")
+    .agg({"Height": "mean", "Weight": "mean"})
+)
+st.dataframe(df_avg_weight_height)
+
 st.subheader("Athletes with the most Medals")
 
 df_athlete_medals = get_medals_athletes()
