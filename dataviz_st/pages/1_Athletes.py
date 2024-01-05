@@ -10,7 +10,7 @@ df_merged = load_datasets()
 
 st.header("Athlete Analysis")
 
-st.dataframe(df_merged)
+# st.dataframe(df_merged)
 
 st.subheader("Gender Analysis")
 df1 = (
@@ -205,7 +205,7 @@ else:
         y="Weight",
         size="Proportion of medals",
         color="Nb of athletes",
-        title=f"Optimal Height and Weight to win a medal in {option_sport} for Athletes competing in {gtext} Category",
+        title=f"Optimal Height and Weight to win a medal in {option_sport} for Athletes competing in the {gtext} Category",
         width=1400,
         height=800,
     )

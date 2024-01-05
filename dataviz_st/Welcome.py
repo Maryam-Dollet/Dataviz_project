@@ -43,5 +43,9 @@ fig.update_geos(
     coastlinecolor="#fff",
     lataxis=dict(showgrid=True, gridwidth=0.2),
     lonaxis=dict(showgrid=True, gridwidth=0.2),
+    showcountries=True,
 )
+fig.update_traces(marker_color="#1E90FF", selector=dict(type="scattergeo"))
+fig.update_traces(marker_size=8, selector=dict(type="scattergeo"))
+
 st.plotly_chart(fig)
