@@ -20,7 +20,7 @@ bash lazy-git.sh
 Update requirement.txt
 
 ```
-conda list -e > requirements.txt
+pip list --format=freeze > requirements.txt
 ```
 
 Run streamlit in local
