@@ -3,6 +3,8 @@ from streamlit_option_menu import option_menu
 from cache_func import get_city_position
 import plotly.express as px
 
+st.set_page_config(layout="wide")
+
 st.header("Data Visualization of The Olympic Games")
 
 st.subheader("Welcome to our Streamlit !")
