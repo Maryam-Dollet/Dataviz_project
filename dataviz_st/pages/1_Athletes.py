@@ -208,5 +208,6 @@ else:
         title=f"Optimal Height and Weight to win a medal in {option_sport} for Athletes competing in the {gtext} Category",
         width=1400,
         height=800,
+        color_continuous_scale="plotly3",
     )
     st.plotly_chart(fig)
