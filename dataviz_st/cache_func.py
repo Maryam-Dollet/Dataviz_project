@@ -75,5 +75,33 @@ def get_medals(filter: str):
 
 
 @st.cache_data
+def get_medals_athletes():
+    df_merged = load_datasets()
+    df = (
+        df_merged[~df_merged.Medal.isna()]
+        .groupby(by=["ID", "Name"])["Medal"]
+        .value_counts()
+        .reset_index()
+        .rename(columns={"count": "medal_count"})
+    )
+
+    df_medals = (
+        df.pivot_table(
+            index=["ID", "Name"], columns="Medal", values="medal_count", aggfunc="sum"
+        )
+        .reset_index()
+        .fillna(0)
+        .astype({"Gold": "int32", "Silver": "int32", "Bronze": "int32"})
+    )
+    df_medals["Total"] = df_medals["Bronze"] + df_medals["Gold"] + df_medals["Silver"]
+
+    return (
+        df_medals[["ID", "Name", "Gold", "Silver", "Bronze", "Total"]]
+        .sort_values(by=["Gold", "Silver", "Bronze"], ascending=False)
+        .reset_index(drop=True)
+    )
+
+
+@st.cache_data
 def filter_df(df: pd.DataFrame, year: int):
     return df[df["Year"] == year]

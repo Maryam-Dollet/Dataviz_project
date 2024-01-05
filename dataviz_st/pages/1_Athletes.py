@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 import plotly.express as px
-from cache_func import load_datasets
+from cache_func import load_datasets, get_medals_athletes
 
 st.set_page_config(layout="wide")
 
@@ -65,3 +65,21 @@ st.plotly_chart(fig)
 
 # athletes_per_country = games_nd.groupby(['Year', 'region']).size().reset_index(name='Nb of athletes')
 # st.dataframe(athletes_per_country)
+
+st.subheader("Athletes with the most Medals")
+
+df_athlete_medals = get_medals_athletes()
+
+st.dataframe(df_athlete_medals)
+
+fig = px.bar(
+    df_athlete_medals.head(15)[::-1],
+    y="Name",
+    x=["Gold", "Silver", "Bronze"],
+    barmode="stack",
+    orientation="h",
+    width=1400,
+    height=800,
+)
+# fig.update_layout(yaxis={'categoryorder':'total descending'})
+st.plotly_chart(fig)
