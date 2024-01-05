@@ -1,4 +1,5 @@
 import streamlit as st
+from streamlit_option_menu import option_menu
 import pandas as pd
 import plotly.express as px
 from cache_func import load_datasets, get_medals_athletes
@@ -66,15 +67,53 @@ st.plotly_chart(fig)
 # athletes_per_country = games_nd.groupby(['Year', 'region']).size().reset_index(name='Nb of athletes')
 # st.dataframe(athletes_per_country)
 
-st.subheader("Average Weight and Height per Discipline")
+season = option_menu("Choose Season", ["Summer", "Winter"])
 
-df_avg_weight_height = (
-    df_merged.dropna(subset=["Height", "Weight"])
+st.subheader(f"Average Weight and Height per Discipline of {season} Games")
+
+df_merged_season = df_merged[df_merged["Season"] == season]
+
+df_avg_weight_height_men = (
+    df_merged_season[df_merged_season["Sex"] == "M"]
+    .dropna(subset=["Height", "Weight"])
     .drop_duplicates(subset=["ID", "Sport"])
     .groupby("Sport")
     .agg({"Height": "mean", "Weight": "mean"})
 )
-st.dataframe(df_avg_weight_height)
+st.dataframe(df_avg_weight_height_men)
+
+df_avg_weight_height_women = (
+    df_merged_season[df_merged_season["Sex"] == "F"]
+    .dropna(subset=["Height", "Weight"])
+    .drop_duplicates(subset=["ID", "Sport"])
+    .groupby("Sport")
+    .agg({"Height": "mean", "Weight": "mean"})
+)
+st.dataframe(df_avg_weight_height_women)
+
+st.markdown("#### Men")
+df_box_men = (
+    df_merged_season[df_merged_season["Sex"] == "M"]
+    .dropna(subset=["Height", "Weight"])
+    .drop_duplicates(subset=["ID", "Sport"])
+)
+st.dataframe(df_box_men)
+
+fig = px.box(df_box_men, x="Sport", y="Height", width=1400, height=800)
+fig.update_xaxes(tickangle=45)
+st.plotly_chart(fig)
+
+st.markdown("#### Women")
+df_box_women = (
+    df_merged_season[df_merged_season["Sex"] == "F"]
+    .dropna(subset=["Height", "Weight"])
+    .drop_duplicates(subset=["ID", "Sport"])
+)
+st.dataframe(df_box_women)
+
+fig = px.box(df_box_women, x="Sport", y="Height", width=1400, height=800)
+fig.update_xaxes(tickangle=45)
+st.plotly_chart(fig)
 
 st.subheader("Athletes with the most Medals")
 
