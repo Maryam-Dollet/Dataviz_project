@@ -11,7 +11,6 @@ with st.sidebar:
     season = option_menu("Choose Season", ["Summer", "Winter"])
 
 df_regions = get_regions(season)
-df_city_positions = get_city_position(season)
 
 fig = px.choropleth(
     df_regions,
@@ -92,19 +91,4 @@ fig = px.bar(
 )
 fig.update_xaxes(tickangle=45)
 # fig["layout"].pop("updatemenus")
-st.plotly_chart(fig)
-
-fig = px.scatter_geo(
-    df_city_positions,
-    lat=df_city_positions.latitude,
-    lon=df_city_positions.longitude,
-    hover_name="description",
-)
-fig.update_layout(width=1300, height=1000, title=f"Host Cities of {season} Games")
-fig.update_geos(
-    bgcolor="#0E1117",
-    coastlinecolor="#fff",
-    lataxis=dict(showgrid=True, gridwidth=0.2),
-    lonaxis=dict(showgrid=True, gridwidth=0.2),
-)
 st.plotly_chart(fig)
