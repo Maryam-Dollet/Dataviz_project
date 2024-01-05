@@ -46,8 +46,7 @@ fig.update_xaxes(tickangle=45)
 
 st.plotly_chart(fig)
 
-st.dataframe(games)
-
+# st.dataframe(games)
 
 unique_events = games.drop_duplicates(subset=["Year", "Sport", "Event"])[
     ["Year", "Sport", "Event"]
