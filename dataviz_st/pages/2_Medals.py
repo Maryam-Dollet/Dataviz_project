@@ -108,6 +108,9 @@ df_top_10 = (
     .reset_index(drop=True)
 )
 
+
+yrange = [0, 80] if season == "Summer" else [0, 15]
+
 fig = px.bar(
     df_top_10,
     x="region",
@@ -116,6 +119,7 @@ fig = px.bar(
     barmode="group",
     width=1400,
     height=800,
+    range_y=yrange,
     text_auto=".1s",
     animation_frame="Year",
     # animation_group="medal_count",
