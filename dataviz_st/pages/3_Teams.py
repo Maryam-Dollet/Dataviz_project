@@ -25,6 +25,10 @@ fig = px.choropleth(
     width=1200,
     height=800,
 )
+fig.update_geos(
+    lataxis=dict(showgrid=True, gridwidth=0.2, griddash="solid", gridcolor="#000"),
+    lonaxis=dict(showgrid=True, gridwidth=0.2, griddash="solid", gridcolor="#000"),
+)
 
 st.plotly_chart(fig)
 
@@ -81,7 +85,7 @@ fig = px.bar(
     top_10_countries_per_year_filtered,
     x="region",
     y="participants number",
-    title=f"{season} Game Number of Athletes Evolution of Top 10 Countries over the years",
+    title=f"Top 10 Countries with the most Athletes {season} Games {year} ",
     color="region",
     width=1400,
     height=700,
@@ -97,4 +101,10 @@ fig = px.scatter_geo(
     hover_name="description",
 )
 fig.update_layout(width=1300, height=1000, title=f"Host Cities of {season} Games")
+fig.update_geos(
+    bgcolor="#0E1117",
+    coastlinecolor="#fff",
+    lataxis=dict(showgrid=True, gridwidth=0.2),
+    lonaxis=dict(showgrid=True, gridwidth=0.2),
+)
 st.plotly_chart(fig)

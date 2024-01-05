@@ -82,7 +82,10 @@ fig = px.choropleth(
     width=1200,
     height=800,
 )
-
+fig.update_geos(bgcolor="#0E1117", coastlinecolor="#fff")
+fig.update_traces(
+    marker_line_color="#000", marker_line_width=1.5, selector=dict(type="choropleth")
+)
 st.plotly_chart(fig)
 
 fig = px.bar(
