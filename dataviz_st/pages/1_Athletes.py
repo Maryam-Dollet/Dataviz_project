@@ -99,13 +99,13 @@ df_box_men = (
 )
 # st.dataframe(df_box_men)
 
-fig = px.box(df_box_men, x="Sport", y="Height", width=1000, height=800, color="Sport")
+fig = px.box(df_box_men, x="Sport", y="Height", width=1000, height=600, color="Sport")
 fig.update_xaxes(tickangle=45)
 st.plotly_chart(fig)
 
 st.markdown(f"#### Men's Weight {season} Sports")
 
-fig = px.box(df_box_men, x="Sport", y="Weight", width=1000, height=800, color="Sport")
+fig = px.box(df_box_men, x="Sport", y="Weight", width=1000, height=600, color="Sport")
 fig.update_xaxes(tickangle=45)
 st.plotly_chart(fig)
 
@@ -117,13 +117,13 @@ df_box_women = (
 )
 # st.dataframe(df_box_women)
 
-fig = px.box(df_box_women, x="Sport", y="Height", width=1000, height=800, color="Sport")
+fig = px.box(df_box_women, x="Sport", y="Height", width=1000, height=600, color="Sport")
 fig.update_xaxes(tickangle=45)
 st.plotly_chart(fig)
 
 st.markdown(f"#### Women's Weight {season} Sports")
 
-fig = px.box(df_box_women, x="Sport", y="Weight", width=1000, height=800, color="Sport")
+fig = px.box(df_box_women, x="Sport", y="Weight", width=1000, height=600, color="Sport")
 fig.update_xaxes(tickangle=45)
 st.plotly_chart(fig)
 
