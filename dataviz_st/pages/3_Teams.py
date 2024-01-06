@@ -21,12 +21,14 @@ fig = px.choropleth(
     title=f"Participating Countries of the {season} Games Each Year",
     color_continuous_scale="Purp",
     locationmode="country names",
-    width=1200,
+    width=1000,
     height=800,
 )
 fig.update_geos(
     lataxis=dict(showgrid=True, gridwidth=0.2, griddash="solid", gridcolor="#000"),
     lonaxis=dict(showgrid=True, gridwidth=0.2, griddash="solid", gridcolor="#000"),
+    showcountries=True,
+    countrycolor="#999",
 )
 
 st.plotly_chart(fig)
@@ -39,8 +41,8 @@ fig = px.line(
     y="participants number",
     color="region",
     title=f"Number of athletes per year and per country for {season} Games",
-    width=1450,
-    height=800,
+    width=1000,
+    height=600,
 )
 # fig.update_xaxes(type="category")
 fig.update_traces(mode="markers+lines", hovertemplate=None)
@@ -86,8 +88,8 @@ fig = px.bar(
     y="participants number",
     title=f"Top 10 Countries with the most Athletes {season} Games {year} ",
     color="region",
-    width=1400,
-    height=700,
+    width=1000,
+    height=600,
 )
 fig.update_xaxes(tickangle=45)
 # fig["layout"].pop("updatemenus")

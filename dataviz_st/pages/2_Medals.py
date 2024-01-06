@@ -66,6 +66,7 @@ with col22:
         barmode="group",
         text_auto=".1s",
         title="Winner Medal Distribution",
+        width=600,
     )
     st.plotly_chart(fig)
 
@@ -79,7 +80,7 @@ fig = px.choropleth(
     title=f"{season} Game Total Medals Evolution per Country over the years",
     color_continuous_scale="Purp",
     locationmode="country names",
-    width=1200,
+    width=1000,
     height=800,
 )
 fig.update_geos(bgcolor="#0E1117", coastlinecolor="#fff")
@@ -94,8 +95,8 @@ fig = px.bar(
     y=["Gold", "Silver", "Bronze"],
     title=f"{season} Game Medal Evolution per Country over the years",
     barmode="group",
-    width=1400,
-    height=800,
+    width=1000,
+    height=600,
     text_auto=".1s",
     animation_frame="Year",
     # animation_group="medal_count",
@@ -120,8 +121,8 @@ fig = px.bar(
     y=["Gold", "Silver", "Bronze"],
     title=f"{season} Game Medal Evolution of Top 10 Countries over the years",
     barmode="group",
-    width=1400,
-    height=800,
+    width=1000,
+    height=600,
     range_y=yrange,
     text_auto=".1s",
     animation_frame="Year",

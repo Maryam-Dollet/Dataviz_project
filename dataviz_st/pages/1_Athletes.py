@@ -49,7 +49,7 @@ fig = px.bar(
     color="Gender",
     title="Gender Repartition through the years",
     barmode="group",
-    width=1400,
+    width=1200,
     height=800,
     text_auto=".2s",
 )
@@ -99,13 +99,13 @@ df_box_men = (
 )
 # st.dataframe(df_box_men)
 
-fig = px.box(df_box_men, x="Sport", y="Height", width=1300, height=800, color="Sport")
+fig = px.box(df_box_men, x="Sport", y="Height", width=1000, height=800, color="Sport")
 fig.update_xaxes(tickangle=45)
 st.plotly_chart(fig)
 
 st.markdown(f"#### Men's Weight {season} Sports")
 
-fig = px.box(df_box_men, x="Sport", y="Weight", width=1300, height=800, color="Sport")
+fig = px.box(df_box_men, x="Sport", y="Weight", width=1000, height=800, color="Sport")
 fig.update_xaxes(tickangle=45)
 st.plotly_chart(fig)
 
@@ -117,13 +117,13 @@ df_box_women = (
 )
 # st.dataframe(df_box_women)
 
-fig = px.box(df_box_women, x="Sport", y="Height", width=1300, height=800, color="Sport")
+fig = px.box(df_box_women, x="Sport", y="Height", width=1000, height=800, color="Sport")
 fig.update_xaxes(tickangle=45)
 st.plotly_chart(fig)
 
 st.markdown(f"#### Women's Weight {season} Sports")
 
-fig = px.box(df_box_women, x="Sport", y="Weight", width=1300, height=800, color="Sport")
+fig = px.box(df_box_women, x="Sport", y="Weight", width=1000, height=800, color="Sport")
 fig.update_xaxes(tickangle=45)
 st.plotly_chart(fig)
 
@@ -140,8 +140,8 @@ fig = px.bar(
     x=["Gold", "Silver", "Bronze"],
     barmode="stack",
     orientation="h",
-    width=1400,
-    height=800,
+    width=1000,
+    height=600,
     title="Top 15 Athletes with the most Medals",
 )
 # fig.update_layout(yaxis={'categoryorder':'total descending'})
@@ -206,7 +206,7 @@ else:
         size="Proportion of medals",
         color="Nb of athletes",
         title=f"Optimal Height and Weight to win a medal in {option_sport} for Athletes competing in the {gtext} Category",
-        width=1400,
+        width=1200,
         height=800,
         color_continuous_scale="plotly3",
     )

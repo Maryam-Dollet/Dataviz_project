@@ -38,8 +38,8 @@ fig = px.bar(
     x="Sport",
     y=["Gold", "Silver", "Bronze"],
     title=f"Number of Medals distributed per Sport in {season} Games",
-    width=1450,
-    height=800,
+    width=1000,
+    height=600,
 )
 fig.update_layout(barmode="stack", xaxis={"categoryorder": "total descending"})
 fig.update_xaxes(tickangle=45)
@@ -70,15 +70,18 @@ category_count = unique_events.value_counts("category").reset_index()
 
 # st.dataframe(category_count)
 
-pie_fig = px.pie(
-    category_count,
-    values="count",
-    names="category",
-    title=f"Category Distribution in {season} Games all years combined",
-    width=800,
-    height=600,
-)
-st.plotly_chart(pie_fig)
+col1, col2, col3, a = st.columns(4)
+
+with col2:
+    pie_fig = px.pie(
+        category_count,
+        values="count",
+        names="category",
+        title=f"Category Distribution in {season} Games all years combined",
+        width=600,
+        height=400,
+    )
+    st.plotly_chart(pie_fig)
 
 st.subheader("Category Distribution through the years")
 year = st.select_slider("Select the Year", options=unique_events.Year.unique())
@@ -87,15 +90,18 @@ category_count_filtered = (
     unique_events[unique_events["Year"] == year].value_counts("category").reset_index()
 )
 
-pie_fig = px.pie(
-    category_count_filtered,
-    values="count",
-    names="category",
-    title=f"Category Distribution in {season} Games {year}",
-    width=800,
-    height=600,
-)
-st.plotly_chart(pie_fig)
+col21, col22, col23, b = st.columns(4)
+
+with col22:
+    pie_fig = px.pie(
+        category_count_filtered,
+        values="count",
+        names="category",
+        title=f"Category Distribution in {season} Games {year}",
+        width=600,
+        height=400,
+    )
+    st.plotly_chart(pie_fig)
 
 st.subheader("Sport Evolution through the years")
 
@@ -120,8 +126,8 @@ fig = px.bar(
     x="Sport",
     y="count",
     color="Sport",
-    width=1300,
-    height=700,
+    width=1000,
+    height=600,
     labels={"count": "Number of Events"},
     title=f"Number of Events per Sport of the {season} Games {year2}",
 )

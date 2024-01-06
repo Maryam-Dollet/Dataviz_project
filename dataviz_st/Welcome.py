@@ -38,7 +38,7 @@ fig = px.scatter_geo(
     hover_name="description",
 )
 fig.update_layout(
-    width=1300, height=1000, title=f"Host Cities of {season} Games across the years"
+    width=1000, height=800, title=f"Host Cities of {season} Games across the years"
 )
 fig.update_geos(
     bgcolor="#0E1117",
