@@ -89,6 +89,10 @@ fig.update_traces(
 )
 st.plotly_chart(fig)
 
+st.write(
+    "This graph allows us to have a representation of the evolution of particular countries regarding their athletic performances in the olympic games. It can somehow reflect the international country's influence and the evolution of the country itself."
+)
+
 fig = px.bar(
     df_athlete_medals.sort_values(by=["Year", "Gold", "Silver", "Bronze"]),
     x="region",
@@ -104,6 +108,10 @@ fig = px.bar(
 fig.update_xaxes(tickangle=45)
 # fig["layout"].pop("updatemenus")
 st.plotly_chart(fig)
+
+st.write(
+    "All the graph representing the ranking of the countries by the number of medals won are ranking according to the amount of gold medals won. In case of a tie, the countries are ranked by the number of silver medals won etc."
+)
 
 # st.dataframe(df_athlete_medals.groupby("Year").apply(lambda x: x.nlargest(10,['Gold',"Silver", "Bronze"])).reset_index(drop=True))
 df_top_10 = (

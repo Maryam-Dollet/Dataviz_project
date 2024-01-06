@@ -30,6 +30,10 @@ fig = px.bar(
 )
 st.plotly_chart(fig)
 
+st.write(
+    "We can see that the feminine gender is less represented since the creation of olympic games. Let's dive through the data to explain this representation difference in the following graph :"
+)
+
 # st.write("Gender Repartition Through the Years")
 ## False Dataframe groupby, because an athlete can compete in different disciplines in the same year.
 df2 = (
@@ -58,6 +62,10 @@ fig.update_traces(
 )
 fig.update_xaxes(type="category")
 st.plotly_chart(fig)
+
+st.write(
+    "Since 1896, women were underrepresented in the olympic games, but the emergence of feminine athletes in the olympic games which started in the 20s led to a more and more equal presence of both sexes in the olympic games. It took a century to observe a relative gender equality (numberwise) in the olympic games."
+)
 
 # st.subheader("Number of Athletes per Country over the years")
 
@@ -103,11 +111,22 @@ fig = px.box(df_box_men, x="Sport", y="Height", width=1000, height=600, color="S
 fig.update_xaxes(tickangle=45)
 st.plotly_chart(fig)
 
+st.write(
+    "We can see a significant difference between the average height of the athletes in the different sports. The average height of the athletes in the sport of basketball is the highest with a median of 195 cm"
+)
+
 st.markdown(f"#### Men's Weight {season} Sports")
 
 fig = px.box(df_box_men, x="Sport", y="Weight", width=1000, height=600, color="Sport")
 fig.update_xaxes(tickangle=45)
 st.plotly_chart(fig)
+
+st.write(
+    "The weight of the athletes is also very different from one sport to another. We can distinguish a similarity with the previous graph because tall people tend to be heavier (& vice-versa)but there are noticable differences :"
+)
+st.write(
+    "For exemple, in summer games : The average weight of the athletes in the sport of weightlifting is quite high whereas their average height in the previous graph was one of the lowest. This means athletes of this sport are in average stockier people."
+)
 
 st.markdown(f"#### Women's Height {season} Sports")
 df_box_women = (
@@ -121,6 +140,10 @@ fig = px.box(df_box_women, x="Sport", y="Height", width=1000, height=600, color=
 fig.update_xaxes(tickangle=45)
 st.plotly_chart(fig)
 
+st.write(
+    "The average heigth of feminine athletes seems to be lower than the average height of masculine athletes. However, the characteristics of the sports are still present : fe. Basketball or Volleyball stay the sports with the highest average height."
+)
+
 st.markdown(f"#### Women's Weight {season} Sports")
 
 fig = px.box(df_box_women, x="Sport", y="Weight", width=1000, height=600, color="Sport")
@@ -133,6 +156,10 @@ st.subheader("Athletes with the most Medals")
 df_athlete_medals = get_medals_athletes()
 
 st.dataframe(df_athlete_medals)
+
+st.write(
+    "The athletes are ranked by the number of medals they won. In case of a tie, the athletes are ranked by the number of gold medals they won etc."
+)
 
 fig = px.bar(
     df_athlete_medals.head(15)[::-1],
@@ -182,6 +209,10 @@ else:
     fig = px.imshow(correlation_matrix.corr(), text_auto=True)
     st.plotly_chart(fig)
 
+    st.write(
+        "We oberve that for most sports, Height and Weight have a correlation with the number of medals obtained by the athletes. However, this is not automatically the case for all sports. For example, in the sport of Judo, the correlation is very small compared to the sport swimming (~0.03 VS ~0.14)"
+    )
+
     correlation_matrix = (
         correlation_matrix.groupby(["Height", "Weight"])
         .agg({"Medal": "sum", "Height": "count"})
@@ -211,3 +242,16 @@ else:
         color_continuous_scale="plotly3",
     )
     st.plotly_chart(fig)
+
+    st.write(
+        "In this last graph, we try to see if there are any optimal height and weight for each sport. "
+    )
+    st.write(
+        "In the graph, the more pink the color is, the more athletes there are with this height and weight."
+    )
+    st.write(
+        "If a circle is big, it means that a high proportion of these athletes have won medals."
+    )
+    st.write(
+        "For readability reasons, we have not displayed the categories of weight and height with a proportion of winning medals equal to 0."
+    )

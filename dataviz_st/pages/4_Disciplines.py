@@ -46,6 +46,10 @@ fig.update_xaxes(tickangle=45)
 
 st.plotly_chart(fig)
 
+st.write(
+    "The number of medals distributed per sport varies a lot. This can be explained by the fact that some sports have more events than others. For example, the sport of swimming has 34 events whereas the sport of golf has only 2 events."
+)
+
 # st.dataframe(games)
 
 unique_events = games.drop_duplicates(subset=["Year", "Sport", "Event"])[
@@ -103,6 +107,10 @@ with col22:
     )
     st.plotly_chart(pie_fig)
 
+st.write(
+    "Alongside the gender repartition in the olympic games, we can see that the number of events opened to women has been progressively catching the number of events opened to men"
+)
+
 st.subheader("Sport Evolution through the years")
 
 year2 = st.select_slider(
@@ -133,3 +141,7 @@ fig = px.bar(
 )
 fig.update_xaxes(tickangle=45)
 st.plotly_chart(fig)
+
+st.write(
+    "The number of events per sport has been increasing since the creation of the olympic games. This can be explained by the creation of new sports, the inclusion of feminine athletes in the olympic games, or the number of weigth categories which can be variable"
+)

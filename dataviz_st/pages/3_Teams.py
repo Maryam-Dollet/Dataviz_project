@@ -33,6 +33,10 @@ fig.update_geos(
 
 st.plotly_chart(fig)
 
+st.write(
+    "The graph represents the evolution of the number of participant of each country in the olympic games. We can see that the number of participants in each countrie's team has been increasing since the creation of the olympic games. However each countries' number of participants can vary a lot from one year to another. This can be explained by the degree of interest of the country in the olympic games. For example, the number of participants of the United States of America in the summer olympic games of 1980 is very low because the country boycotted the olympic games of 1980."
+)
+
 # st.dataframe(df_regions.style.format({"Year": lambda x: "{:}".format(x)}))
 
 fig = px.line(
@@ -48,6 +52,10 @@ fig = px.line(
 fig.update_traces(mode="markers+lines", hovertemplate=None)
 fig.update_layout(hovermode="x unified")
 st.plotly_chart(fig)
+
+st.write(
+    "We observe a growth in the number of athletes participating since the creation of the olympic games. This can be explained by the fact that the number of sports has been increasing since the creation of the olympic games and the inclusion of feminine athletes in the olympic games."
+)
 
 top_10_countries = (
     df_regions.groupby("region")["participants number"]
