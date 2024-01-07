@@ -34,8 +34,17 @@ fig.update_geos(
 st.plotly_chart(fig)
 
 st.write(
-    "The graph represents the evolution of the number of participant of each country in the olympic games. We can see that the number of participants in each countrie's team has been increasing since the creation of the olympic games. However each countries' number of participants can vary a lot from one year to another. This can be explained by the degree of interest of the country in the olympic games. For example, the number of participants of the United States of America in the summer olympic games of 1980 is very low because the country boycotted the olympic games of 1980."
+    "The graph represents the evolution of the number of participant of each country in the olympic games. We can see that the number of participants in each countrie's team has been increasing since the creation of the olympic games. However each countries' number of participants can vary a lot from one year to another. This can be explained by the degree of interest of the country in the olympic games. "
 )
+
+if season == "Winter":
+    st.write(
+        "Countries where there is a possibility to practive Winter Sport do participate more it the Winter Games. The lack of Southern country participation may be explained by the lack of the favourable environment as well as the low development of the winter sports in some."
+    )
+else:
+    st.write(
+        "For example, the number of participants of the United States of America in the summer olympic games of 1980 is very low because the country boycotted the olympic games of 1980."
+    )
 
 # st.dataframe(df_regions.style.format({"Year": lambda x: "{:}".format(x)}))
 

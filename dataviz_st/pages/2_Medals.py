@@ -139,3 +139,12 @@ fig = px.bar(
 fig.update_xaxes(tickangle=45)
 # fig["layout"].pop("updatemenus")
 st.plotly_chart(fig)
+
+if season == "Summer":
+    st.write(
+        "We can see that across time, USA and Russia appear to be winners of the Olymic Games more often, the rivalry between those two countries in the 20th century are even reflected in the Olympic Games."
+    )
+else:
+    st.write(
+        "As Winter Games are only accessible in the Northern Countries where the temperatures are low and the Winter Sport practice is high, it is not surprising that among the winners Finland, Germany, Norway and Russia appear the most. "
+    )
