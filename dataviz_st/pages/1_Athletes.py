@@ -128,6 +128,11 @@ st.write(
     "For exemple, in summer games : The average weight of the athletes in the sport of weightlifting is quite high whereas their average height in the previous graph was one of the lowest. This means athletes of this sport are in average stockier people."
 )
 
+if season == "Summer":
+    st.write("We can also explain, that the Weight of the athletes varies a lot for the following sports: Judo, Weightlifting, Boxing, Wrestling and Athletics. For the contact sports, it is explainable by the fact that the sport events are split into weight categories. As for Athletics, the explanation may be because Athletics is a Sport with a multitude of disciplines that are different from each other and require differents types of bodies to excel in the said discipline. ")
+else:
+    st.write("For the Winter Sports, one noticeabale aspect of the weight graph for both men and women is the Bobsleigh Sport. Both medians (men and women) are high, this could be because the Sport requires a heavy body for an athlete to excel in it. The archetypal (male) bobsledder would be around 190cm talland weigh 105kg so, the hypothesis is well founded")
+
 st.markdown(f"#### Women's Height {season} Sports")
 df_box_women = (
     df_merged_season[df_merged_season["Sex"] == "F"]
