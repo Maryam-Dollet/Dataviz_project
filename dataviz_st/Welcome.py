@@ -27,6 +27,17 @@ st.markdown("- https://api-ninjas.com/api/geocoding ")
 
 st.markdown("##### Let's open this project with the first visualization:")
 
+st.write(
+    "On the sidebar on the left you can navigate through all the pages to see the visualization about the pages' themes."
+)
+
+st.write(
+    "These are the locations of all the Olympic Games that have taken place since the beginning."
+)
+st.write(
+    "You can change to the Summer or Winter Games on the sidebar (left), you will be able to interact with the visualizations in the same way throughout the pages on differents graphs."
+)
+
 with st.sidebar:
     season = option_menu("Choose Season", ["Summer", "Winter"])
 df_city_positions = get_city_position(season)
