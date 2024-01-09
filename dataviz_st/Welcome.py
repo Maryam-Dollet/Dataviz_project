@@ -25,6 +25,10 @@ st.markdown(
 )
 st.markdown("- https://api-ninjas.com/api/geocoding ")
 
+st.markdown("Link to our GitHub:")
+
+st.markdown("https://github.com/Maryam-Dollet/Dataviz_project")
+
 st.markdown("##### Let's open this project with the first visualization:")
 
 st.write(
